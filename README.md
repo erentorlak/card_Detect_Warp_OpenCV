@@ -49,4 +49,4 @@ This project is a computer vision application using OpenCV to detect cards (Quad
 <img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/final.png" width="400" height="200">
 9. **Perspective Transformation**:
    - Detected quadrilaterals undergo a perspective transformation. This process involves mapping the points of the quadrilateral to a rectangle, allowing the content within the quadrilateral to be viewed head-on. This is useful for applications like document scanning where a non-frontal image of a document needs to be transformed to look like it was captured directly from the front.
-<img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/warped_cards.png" width="600" height="200">
+<img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/warped_cards.png" width="800" height="200">
