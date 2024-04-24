@@ -45,7 +45,7 @@ This project is a computer vision application using OpenCV to detect cards (Quad
 8. **Validation of Quadrilaterals**:
    - For each approximated quadrilateral, further checks are applied:
      - **Edge Ratio Validation**: The ratios of opposite sides of the quadrilateral are calculated and compared. A significant discrepancy in these ratios may indicate that the shape is not a perfect rectangle or square, which might be critical depending on the application. I chose a range of 30 to 150 degrees as valid angles.
-     - **Angle Validation**: The angles at each vertex of the quadrilateral are calculated. Valid quadrilaterals for many practical applications (like scanning documents) are expected to have angles close to 90 degrees. This step filters out skewed or irregular quadrilaterals. I chose a 1:2 ratio for edge length.
+     - **Angle Validation**: The angles at each vertex of the quadrilateral are calculated. Valid quadrilaterals for many practical applications (like scanning documents) are expected to have angles close to 90 degrees. This step filters out skewed or irregular quadrilaterals. I chose a 1:2 ratio at most for edge length.
 <img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/final.png" width="400" height="200">
 9. **Perspective Transformation**:
    - Detected quadrilaterals undergo a perspective transformation. This process involves mapping the points of the quadrilateral to a rectangle, allowing the content within the quadrilateral to be viewed head-on. This is useful for applications like document scanning where a non-frontal image of a document needs to be transformed to look like it was captured directly from the front.
