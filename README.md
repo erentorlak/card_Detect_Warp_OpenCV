@@ -1,6 +1,6 @@
 # OpenCV Quadrilateral Detection and Perspective Transformation
 
-This project is a computer vision application using OpenCV to detect cards (Quadrilaterals), in a real-time video stream from a webcam.
+This project is a computer vision application using OpenCV to detect cards (Quadrilaterals) and getting birds-eye view, in a real-time video stream from a webcam.
 
 ## Features
 
