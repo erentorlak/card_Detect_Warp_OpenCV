@@ -18,6 +18,8 @@ This project is a computer vision application using OpenCV to detect cards (Quad
 2. **Grayscale Conversion and Blurring**:
    - Each captured frame is first converted to grayscale. Grayscale simplifies the image data by eliminating color variance, focusing processing on intensity variance.
    - A Gaussian blur is then applied to the grayscale image. This step reduces image noise and detail by smoothing the image, which is particularly useful to prepare for edge detection.
+     <img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/main/output/gray.png" width="400" height="200">
+
 
 3. **Adaptive Thresholding**:
    - After blurring, the program applies adaptive thresholding to the image. Unlike simple thresholding that uses a global threshold value, adaptive thresholding calculates thresholds for smaller regions, allowing for variations in lighting conditions across the image. This results in a binary image where the foreground (potential polygons) is separated from the background.
