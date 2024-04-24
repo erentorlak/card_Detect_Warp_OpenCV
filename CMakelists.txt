@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.12)
+
+# Set the project name and version
+project(detect VERSION 1.0)
+
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Find OpenCV package
+set(OpenCV_DIR "C:/opencv/build") 
+find_package(OpenCV REQUIRED)
+
+
+# Add include directories
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+# Define the executable
+add_executable(detect detect.cpp)
+
+# Link libraries
+target_link_libraries(detect ${OpenCV_LIBS})
