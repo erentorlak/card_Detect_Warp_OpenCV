@@ -26,18 +26,22 @@ This project is a computer vision application using OpenCV to detect cards (Quad
    - After blurring, the program applies adaptive thresholding to the image. Unlike simple thresholding that uses a global threshold value, adaptive thresholding calculates thresholds for smaller regions, allowing for variations in lighting conditions across the image. This results in a binary image where the foreground (potential polygons) is separated from the background.
 
 <img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/binary.png" width="400" height="200">
+
 4. **Contour Detection**:
    - The binary image is then used to detect contours using OpenCV's `findContours` function. This function retrieves all the contours from the binary image using an external retrieval mode, which only captures the outermost contours.
 
 5. **Contour Filtering**:
    - Not all detected contours are relevant; some may be noise or irrelevant details. The contours are filtered based on their area to exclude very small contours that are unlikely to be the target polygons.
+   
 <img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/contour.png" width="400" height="200">
 
 6. **Morphological Operations**:
    - To refine the contours, morphological operations such as erosion and dilation are applied:
      - **Erosion**: This operation reduces the size of foreground objects and is used to eliminate small white noise and detach connected objects.
      - **Dilation**: After eroding, dilation is applied to restore the object size and to fill in gaps in the contours, improving the continuity of detected shapes.
+     
 <img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/morphed.png" width="400" height="200">
+
 7. **Polygon Approximation**:
    - For each filtered contour, the program uses `approxPolyDP` to approximate the contour to a polygon. This function reduces the number of points in a contour while maintaining its shape, allowing for an accurate and simplified representation of the contour. The approximation is tuned by specifying an epsilon value, which is a maximum distance from the contour to the approximated contour.
    - Polygons with exactly four vertices are considered as potential targets (e.g., rectangles or squares).
@@ -46,7 +50,10 @@ This project is a computer vision application using OpenCV to detect cards (Quad
    - For each approximated quadrilateral, further checks are applied:
      - **Edge Ratio Validation**: The ratios of opposite sides of the quadrilateral are calculated and compared. A significant discrepancy in these ratios may indicate that the shape is not a perfect rectangle or square, which might be critical depending on the application. I chose a range of 30 to 150 degrees as valid angles.
      - **Angle Validation**: The angles at each vertex of the quadrilateral are calculated. Valid quadrilaterals for many practical applications (like scanning documents) are expected to have angles close to 90 degrees. This step filters out skewed or irregular quadrilaterals. I chose a 1:2 ratio at most for edge length.
+     
 <img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/final.png" width="400" height="200">
+
 9. **Perspective Transformation**:
    - Detected quadrilaterals undergo a perspective transformation. This process involves mapping the points of the quadrilateral to a rectangle, allowing the content within the quadrilateral to be viewed head-on. This is useful for applications like document scanning where a non-frontal image of a document needs to be transformed to look like it was captured directly from the front.
+   
 <img src="https://github.com/erentorlak/card_Detect_Warp_OpenCV/blob/main/outputs/warped_cards.png" width="800" height="200">
